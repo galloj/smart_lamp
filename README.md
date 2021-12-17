@@ -11,7 +11,7 @@ First of all you will need some lamp. It should be lamp powered by external powe
 Next you will need to buy few things:
 
 - [ESP8266](https://www.aliexpress.com/item/32656775273.html) - NodeMCU
-- [Step down power supply](https://www.aliexpress.com/item/33015256539.html)
+- [Step down convertor](https://www.aliexpress.com/item/33015256539.html)
 - [Touch sensor](https://www.aliexpress.com/item/4000540638639.html)
 - [Transistor](https://www.aliexpress.com/item/32878220199.html) - for example TIP120, but you can try some other
 
@@ -22,10 +22,19 @@ Also you will need some other things that you probably have lying around:
 - Paper or some other stuff for filling space
 - Micro USB cable
 - Some resistor - value around 1kOhm should be fine, I used for example 2.2kOhm
+- Multimeter
 
 ## Let's look at it
 
-TODO
+![Lamp schematic](imgs/lamp_schematic.png)
+
+Here you can see schematic of whole lamp. Black and red wires from the plug are actually negative and positive wires from supply. Pink and violet wires are positive and negative wires leading LED lamp.
+
+You also might like to keep original switch on lamp connected. To do this just place it in between powersupply and step down convertor (cutting the pink wire at left into two).
+
+**IMPORTANT:** Also there is one thing which you need to do before even starting to solder everything together! You will need to configure proper voltage on step down convertor. This is done by connecting in to power supply (you can use the lamp or bench power supply) and changing value of potentiometer (small shiny thing - also the only one thing in which you can fit screwdriver and rotate with it) till you measure the voltage between `VO+` and `GND` to be about 5V.
+
+I don't recommend to try using the voltage settings pads as they don't work properly.
 
 ## Programming setup
 
@@ -39,13 +48,19 @@ Now you will need to open your lamp and solder everything together according to 
 
 ## Lamp power
 
-First you should check your lamp voltage. As said before it should be 9-24V. It is also possible to use 5V lamp, but you would need to left out step down power supply.
+First you should check your lamp voltage. As said before it should be 9-24V. It is also possible to use 5V lamp, but you would need to left out step down convertor.
 
 Here you can see the label on lamp - thing that matters is `9V DC`:
 ![Lamp voltage rating](imgs/lamp_voltage.jpg)
 And here is power supply - thing that matters is again `9V`:
 ![Power supply voltage rating](imgs/psu_voltage.jpg)
 Also keep in mind that you should never try to open the power supply!
+
+When you open up the lamp and don't have mutlimeter at hand, you can guess which cable is which based on their look.
+![Image of cable](imgs/lamp_wire.jpg)
+Here you can see dashed line on single wire. This indicates that the dashed wire is negative (- sign).
+
+Also inside of the lamp the most common color for positive wire is red. For negative it is blue and black.
 
 ## ESP8266 soldering
 
